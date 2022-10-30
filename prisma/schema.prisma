@@ -5,28 +5,20 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator graphql {
-  provider   = "node node_modules/prisma-nestjs-graphql"
-  output     = "../src/@generated"
-  emitSingle = true
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Cat {
   id    String @id @default(uuid()) @db.Uuid
   name  String
-  image String
-  phone String
 
-  role Role
+  breed Breed
 }
 
-enum Role {
-  USER
-  GUEST
-  ADMIN
+enum Breed {
+  WHITE
+  BLACK
+  GREEN
 }
